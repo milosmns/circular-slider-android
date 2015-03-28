@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CircularSlider">
+        <attr name="start_angle" format="float" />
+        <attr name="angle" format="float" />
+
+        <attr name="border_thickness" format="dimension" />
+        <attr name="border_color" format="color" />
+
+        <attr name="thumb_size" format="dimension" />
+        <attr name="thumb_image" format="reference" />
+        <attr name="thumb_color" format="color" />
+    </declare-styleable>
+
+</resources>
