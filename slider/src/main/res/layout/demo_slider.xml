@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circular="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#303030">
+
+    <me.angrybyte.circularslider.CircularSlider
+        android:id="@+id/circular"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        circular:angle="3.14"
+        circular:border_color="#505090"
+        circular:border_thickness="14dp"
+        circular:thumb_color="#30AEFF"
+        circular:thumb_size="24dp" />
+
+</RelativeLayout>

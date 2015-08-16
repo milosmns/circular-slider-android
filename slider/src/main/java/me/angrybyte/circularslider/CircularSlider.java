@@ -1,4 +1,5 @@
-package com.vaptim.circularslider;
+
+package me.angrybyte.circularslider;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -92,7 +93,8 @@ public class CircularSlider extends View {
         // assign padding - check for version because of RTL layout compatibility
         int padding;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            padding = (getPaddingLeft() + getPaddingRight() + getPaddingBottom() + getPaddingTop() + getPaddingEnd() + getPaddingStart()) / 6;
+            int all = getPaddingLeft() + getPaddingRight() + getPaddingBottom() + getPaddingTop() + getPaddingEnd() + getPaddingStart();
+            padding = all / 6;
         } else {
             padding = (getPaddingLeft() + getPaddingRight() + getPaddingBottom() + getPaddingTop()) / 4;
         }
@@ -182,8 +184,7 @@ public class CircularSlider extends View {
     }
 
     /**
-     * Invoked when slider starts moving or is currently moving.
-     * This method calculates and sets position and angle of the thumb.
+     * Invoked when slider starts moving or is currently moving. This method calculates and sets position and angle of the thumb.
      *
      * @param touchX Where is the touch identifier now on X axis
      * @param touchY Where is the touch identifier now on Y axis
@@ -218,7 +219,7 @@ public class CircularSlider extends View {
     }
 
     /**
-     * Saves a new slider moved listner. Set {@link com.vaptim.circularslider.CircularSlider.OnSliderMovedListener} to {@code null} to remove it.
+     * Saves a new slider moved listner. Set {@link CircularSlider.OnSliderMovedListener} to {@code null} to remove it.
      *
      * @param listener Instance of the slider moved listener, or null when removing it
      */
