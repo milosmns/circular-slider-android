@@ -13,7 +13,7 @@ Requirements
 - Android 2.3 or later SDK level
 - Android Studio (to compile it and use)
 
-How does it look like?
+What does it look like?
 ----------------------
 
 ![Circular Slider Image](http://i.imgur.com/au9sYb5.png)
