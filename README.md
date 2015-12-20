@@ -28,7 +28,8 @@ This will run the app on your device. You may need to download a newer version o
 
 What does it look like?
 ----------------------
-![screenshot_1](http://i.imgur.com/au9sYb5.png)
+![screenshot_1](https://raw.githubusercontent.com/milosmns/circular-slider-android/master/slider/src/images/CircularSlider-Image_downscaled.png)
+
 A dark variant
 
 Sample usage
