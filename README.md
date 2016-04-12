@@ -35,18 +35,18 @@ A dark variant
 
 Sample usage
 ------------
-    ...
-    <me.angrybyte.circularslider.CircularSlider
-        android:id="@+id/circular"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="30dp"
-        circular:angle="3.14"
-        circular:border_color="#505090"
-        circular:border_thickness="14dp"
-        circular:thumb_color="#30AEFF"
-        circular:thumb_size="24dp" />
-    ...
+```xml
+<me.angrybyte.circularslider.CircularSlider
+    android:id="@+id/circular"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    circular:angle="3.14"
+    circular:border_color="#505090"
+    circular:border_thickness="14dp"
+    circular:thumb_color="#30AEFF"
+    circular:thumb_size="24dp" />
+```
 
 Explanation of attributes
 -------------------------
