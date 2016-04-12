@@ -1,6 +1,7 @@
 Circular Slider
 ===============
 [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-184-blue.svg)](http://androidweekly.net/issues/issue-184)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Circular%20Slider-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/3417)
 
 What is this?
 -------------
