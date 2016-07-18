@@ -22,7 +22,7 @@ Getting Started
 1. Open your project's main Gradle file, in root directory (**/build.gradle**)
 1. Make sure you are using **jcenter()** in the repository block (**mavenCentral()** should work too)
 1. Open your app module Gradle file, for example **/app/build.gradle**
-1. In **dependencies** block, add the following line: `compile 'me.angrybyte.slider:slider:1.2.0'`
+1. In **dependencies** block, add the following line: `compile 'me.angrybyte.slider:slider:1.3.0'`
 1. Click **Tools/Android/Sync Project with Gradle Files** or click on the *Sync* icon in the top toolbar
 1. Click **Run/Run 'app'** to see if it's resolved correctly
 
