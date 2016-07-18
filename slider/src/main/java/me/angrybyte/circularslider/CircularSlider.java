@@ -236,6 +236,7 @@ public class CircularSlider extends View {
                 int x = (int) ev.getX();
                 int y = (int) ev.getY();
                 if (x < mThumbX + mThumbSize && x > mThumbX - mThumbSize && y < mThumbY + mThumbSize && y > mThumbY - mThumbSize) {
+                    getParent().requestDisallowInterceptTouchEvent(true);
                     mIsThumbSelected = true;
                     updateSliderState(x, y);
                 }
@@ -254,6 +255,7 @@ public class CircularSlider extends View {
 
             case MotionEvent.ACTION_UP: {
                 // finished moving (this is the last touch)
+                getParent().requestDisallowInterceptTouchEvent(false);
                 mIsThumbSelected = false;
                 break;
             }
