@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.SweepGradient;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -41,12 +42,14 @@ public class CircularSlider extends View {
     private int mThumbSize;
     private int mThumbColor;
     private int mBorderColor;
+    private int[] mBorderGradientColors;
     private int mBorderThickness;
     private double mStartAngle;
     private double mAngle = mStartAngle;
     private boolean mIsThumbSelected = false;
 
     private Paint mPaint = new Paint();
+    private SweepGradient mGradientShader;
     private OnSliderMovedListener mListener;
 
     public CircularSlider(Context context) {
@@ -79,6 +82,7 @@ public class CircularSlider extends View {
         int thumbColor = a.getColor(R.styleable.CircularSlider_thumb_color, Color.GRAY);
         int borderThickness = a.getDimensionPixelSize(R.styleable.CircularSlider_border_thickness, 20);
         int borderColor = a.getColor(R.styleable.CircularSlider_border_color, Color.RED);
+        String borderGradientColors = a.getString(R.styleable.CircularSlider_border_gradient_colors);
         Drawable thumbImage = a.getDrawable(R.styleable.CircularSlider_thumb_image);
 
         // save those to fields (really, do we need setters here..?)
@@ -86,6 +90,9 @@ public class CircularSlider extends View {
         setAngle(angle);
         setBorderThickness(borderThickness);
         setBorderColor(borderColor);
+        if (borderGradientColors != null) {
+            setBorderGradientColors(borderGradientColors.split(";"));
+        }
         setThumbSize(thumbSize);
         setThumbImage(thumbImage);
         setThumbColor(thumbColor);
@@ -124,6 +131,17 @@ public class CircularSlider extends View {
         mBorderColor = color;
     }
 
+    public void setBorderGradientColors(String[] colors) {
+        mBorderGradientColors = new int[colors.length];
+        for (int i=0;i<colors.length;i++) {
+            mBorderGradientColors[i] = Color.parseColor(colors[i]);
+        }
+    }
+
+    public void setBorderGradientColors(int[] colors) {
+        mBorderGradientColors = colors.clone();
+    }
+
     public void setThumbImage(Drawable drawable) {
         mThumbImage = drawable;
     }
@@ -152,6 +170,11 @@ public class CircularSlider extends View {
         mCircleCenterY = largestCenteredSquareBottom / 2 + (h - largestCenteredSquareBottom) / 2;
         mCircleRadius = smallerDim / 2 - mBorderThickness / 2 - mPadding;
 
+        if (mBorderGradientColors != null) {
+            mGradientShader =
+                    new SweepGradient(mCircleRadius, mCircleRadius, mBorderGradientColors, null);
+        }
+
         // works well for now, should we call something else here?
         super.onSizeChanged(w, h, oldw, oldh);
     }
@@ -165,6 +188,9 @@ public class CircularSlider extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(mBorderThickness);
         mPaint.setAntiAlias(true);
+        if (mGradientShader != null) {
+            mPaint.setShader(mGradientShader);
+        }
         canvas.drawCircle(mCircleCenterX, mCircleCenterY, mCircleRadius, mPaint);
 
         // find thumb position
