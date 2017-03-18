@@ -6,6 +6,7 @@
         <attr name="angle" format="float" />
         <attr name="border_thickness" format="dimension" />
         <attr name="border_color" format="color" />
+        <attr name="border_gradient_colors" format="string" />
         <attr name="thumb_size" format="dimension" />
         <attr name="thumb_image" format="reference" />
         <attr name="thumb_color" format="color" />
