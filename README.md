@@ -45,6 +45,7 @@ Sample usage
     circular:angle="3.14"
     circular:border_color="#505090"
     circular:border_thickness="14dp"
+    circular:border_gradient_colors="#f05151;#4a90e2;#4a90e2"
     circular:thumb_color="#30AEFF"
     circular:thumb_size="24dp" />
 ```
