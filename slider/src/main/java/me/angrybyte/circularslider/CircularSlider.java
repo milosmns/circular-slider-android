@@ -14,12 +14,14 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.Arrays;
+
 public class CircularSlider extends View {
 
     /**
      * Listener interface used to detect when slider moves around.
      */
-    public static interface OnSliderMovedListener {
+    interface OnSliderMovedListener {
 
         /**
          * This method is invoked when slider moves, providing position of the slider thumb.
@@ -27,7 +29,7 @@ public class CircularSlider extends View {
          * @param pos Value between 0 and 1 representing the current angle.<br>
          *            {@code pos = (Angle - StartingAngle) / (2 * Pi)}
          */
-        public void onSliderMoved(double pos);
+        void onSliderMoved(double pos);
     }
 
     private int mThumbX;
@@ -65,6 +67,7 @@ public class CircularSlider extends View {
         init(context, attrs, defStyleAttr);
     }
 
+    @SuppressWarnings("unused")
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public CircularSlider(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -133,13 +136,20 @@ public class CircularSlider extends View {
 
     public void setBorderGradientColors(String[] colors) {
         mBorderGradientColors = new int[colors.length];
-        for (int i=0;i<colors.length;i++) {
+        for (int i = 0; i < colors.length; i++) {
             mBorderGradientColors[i] = Color.parseColor(colors[i]);
         }
     }
 
+    @SuppressWarnings("unused")
     public void setBorderGradientColors(int[] colors) {
-        mBorderGradientColors = colors.clone();
+        if (colors == null) {
+            mBorderGradientColors = null;
+            mGradientShader = null;
+        } else {
+            mBorderGradientColors = Arrays.copyOf(colors, colors.length);
+            mGradientShader = new SweepGradient(mCircleRadius, mCircleRadius, mBorderGradientColors, null);
+        }
     }
 
     public void setThumbImage(Drawable drawable) {
@@ -155,7 +165,7 @@ public class CircularSlider extends View {
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    protected void onSizeChanged(int w, int h, int oldW, int oldH) {
         // use smaller dimension for calculations (depends on parent size)
         int smallerDim = w > h ? h : w;
 
@@ -171,12 +181,11 @@ public class CircularSlider extends View {
         mCircleRadius = smallerDim / 2 - mBorderThickness / 2 - mPadding;
 
         if (mBorderGradientColors != null) {
-            mGradientShader =
-                    new SweepGradient(mCircleRadius, mCircleRadius, mBorderGradientColors, null);
+            mGradientShader = new SweepGradient(mCircleRadius, mCircleRadius, mBorderGradientColors, null);
         }
 
         // works well for now, should we call something else here?
-        super.onSizeChanged(w, h, oldw, oldh);
+        super.onSizeChanged(w, h, oldW, oldH);
     }
 
     @Override
@@ -238,6 +247,7 @@ public class CircularSlider extends View {
      * @param pos Value between 0 and 1 used to calculate the angle. {@code Angle = StartingAngle + pos * 2 * Pi}<br>
      *            Note that angle will not be updated if the position parameter is not in the valid range [0..1]
      */
+    @SuppressWarnings("unused")
     public void setPosition(double pos) {
         if (pos >= 0 && pos <= 1) {
             mAngle = mStartAngle + pos * 2 * Math.PI;
@@ -245,10 +255,11 @@ public class CircularSlider extends View {
     }
 
     /**
-     * Saves a new slider moved listner. Set {@link CircularSlider.OnSliderMovedListener} to {@code null} to remove it.
+     * Saves a new slider moved listener. Set {@link CircularSlider.OnSliderMovedListener} to {@code null} to remove it.
      *
      * @param listener Instance of the slider moved listener, or null when removing it
      */
+    @SuppressWarnings("unused")
     public void setOnSliderMovedListener(OnSliderMovedListener listener) {
         mListener = listener;
     }

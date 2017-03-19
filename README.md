@@ -22,7 +22,7 @@ Getting Started
 1. Open your project's main Gradle file, in root directory (**/build.gradle**)
 1. Make sure you are using **jcenter()** in the repository block (**mavenCentral()** should work too)
 1. Open your app module Gradle file, for example **/app/build.gradle**
-1. In **dependencies** block, add the following line: `compile 'me.angrybyte.slider:slider:1.3.0'`
+1. In **dependencies** block, add the following line: `compile 'me.angrybyte.slider:slider:1.4.1'`
 1. Click **Tools/Android/Sync Project with Gradle Files** or click on the *Sync* icon in the top toolbar
 1. Click **Run/Run 'app'** to see if it's resolved correctly
 
@@ -57,6 +57,7 @@ Here are some short explanations for the attributes provided by the view. You ca
 - `start_angle`: (**float**) The starting position of the slider thumb, a pi-based valued of the angle (radians).
 - `border_thickness`: (**dimension**) How thick should the slider border be (this can be a 0-dimension).
 - `border_color`: (**color**) Recolors the slider border to the specified color.
+- `border_gradient_colors`: (**string**) Creates a gradient on the slider's circular edge. Format: "#f05151;#4a90e2;#4a90e2"
 - `thumb_size`: (**dimension**) Radius of the slider thumb (thumb is the slider's movable part).
 - `thumb_image`: (**reference**) Set this to use an image instead of a colored circle for the slider thumb.
 - `thumb_color`: (**color**) Set this to use a colored circle instead of an image for the slider thumb.
