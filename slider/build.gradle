@@ -20,7 +20,7 @@ ext {
     siteUrl = 'https://github.com/milosmns/circular-slider-android'
     gitUrl = 'https://github.com/milosmns/circular-slider-android.git'
 
-    libraryVersion = '1.4.1'
+    libraryVersion = '1.4.2'
 
     developerId = 'milosmns'
     developerName = 'Milos Marinkovic'
@@ -38,8 +38,8 @@ android {
     defaultConfig {
         minSdkVersion 11
         targetSdkVersion 22
-        versionCode 5
-        versionName "1.4.1"
+        versionCode 6
+        versionName "1.4.2"
     }
 
     buildTypes {
