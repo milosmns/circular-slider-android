@@ -21,7 +21,8 @@ public class CircularSlider extends View {
     /**
      * Listener interface used to detect when slider moves around.
      */
-    interface OnSliderMovedListener {
+    @SuppressWarnings("WeakerAccess")
+    public interface OnSliderMovedListener {
 
         /**
          * This method is invoked when slider moves, providing position of the slider thumb.
